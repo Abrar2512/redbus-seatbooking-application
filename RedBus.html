@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap By SKILLHUB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bus {
+            display: flex;
+            flex-wrap: wrap;
+            width: 200px;
+        
+
+        }
+
+        .seat {
+            height: 100px;
+            width: 50px;
+            border: 2px solid gray;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body class="bg-danger">
+    <!-- 
+        step 1 create seat layout
+        step 2 build select logic 
+        step 3 deselect logic
+        step 4 booking logic
+        step 5 bill logic
+     -->
+<h1 id="h1" class="text-center text-decoration-underline bg-warning mt-1">Choose Your Redbus Seat Now. </h1>
+    <div id="output"></div>
+   <div class="d-flex justify-content-center">
+    <div  class="bus text-center ">
+        <div class="seat " onclick="handleSeatSelect('s1')" id="s1"><h1 class="">s1</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s2')" id="s2"><h1 class="">s2</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s3')" id="s3"><h1 class="">s3</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s4')" id="s4"><h1 class="">s4</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s5')" id="s5"><h1 class="">s5</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s6')" id="s6"><h1 class="">s6</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s7')" id="s7"><h1 class="">s7</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s8')" id="s8"><h1 class="">s8</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s9')" id="s9"><h1 class="">s9</h1></div>
+        <div class="seat" onclick="handleSeatSelect('s10')" id="s10"><h2 class="">s10</h2></div>
+        <div class="seat" onclick="handleSeatSelect('s11')" id="s11"><h2 class="">s11</h2></div>
+        <div class="seat" onclick="handleSeatSelect('s12')" id="s12"><h2 class="">s12</h2></div>
+    </div>
+   </div>
+
+
+
+    <script>
+        let seatPrice = 500
+        function handleSeatSelect(seatId) {
+            
+            let hasClass = document
+                .getElementById(seatId)
+                .classList.contains("bg-warning")
+            if (hasClass) {
+                // remove
+                document
+                    .getElementById(seatId)
+                    .classList.remove("bg-warning")
+            } else {
+                // add
+                document
+                    .getElementById(seatId)
+                    .classList.add("bg-warning")
+            }
+            let x = document.querySelectorAll(".bg-warning")
+            let seatIds = " "
+            for (let i = 0; i < x.length; i++) {
+                seatIds += x[i].id + ", "
+            }
+
+            let selectedSeats = x.length
+            let GSTRate = 28 / 100
+            let estPrice = selectedSeats * seatPrice
+            document.getElementById("output")
+                .innerHTML = `<div class="alert alert-warning text-center">
+                  <h1 class="bg-danger">You Have Selected = ${selectedSeats}. Seat</h1>
+                  <h2 class="bg-warning">Seat Numbers= ${seatIds}</h2>
+                  
+                  <h2 >Per Seat Price = ${seatPrice}</h2>
+                  <hr>
+                  <h2>Est Price ${estPrice}</h2>
+                  <h2>GST ${estPrice * GSTRate}</h2>
+                  <hr>
+                  <h2>Total ${estPrice + (estPrice * GSTRate)}</h2>
+
+                </div>
+                `
+        }
+
+       
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+<!-- 
+    localstorage
+    promises
+    call by value and call by refrance
+
+ -->
+
+</html>
